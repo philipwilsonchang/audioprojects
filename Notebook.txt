@@ -1,2 +1,51 @@
 TensorFlow Notes
 
+######## INTRODUCTION #########
+https://www.tensorflow.org/programmers_guide/low_level_intro
+
+- Tensor: 
+	- central unit of data in TensorFlow (set of values in an array of any number of dimensions) (aka a matrix)
+	- tensor values are represented with numpy arrays
+
+- tf.Graph:
+	- series of TensorFlow operations arranged in a graph
+	- two objects compose a graph:
+		- Operations (graph nodes) - calculations that take in and output tensors
+		- Tensors (graph edges) - data that flows through the graph
+
+	- TensorBoard: utility that visualizes the tf.Graph object
+
+- tf.Session:
+	- object that encapsulates the TensorFlow runtime and runs operations (like an executable)
+	- tf.Session.run() runs a Session object, taking in Tensor objects
+	- run() requests a tensor object - TensorFlow runs all nodes that feed into the requested output tensor object
+	- each iteration of run() is independent - random values are not preserved across runs!
+
+- Feeding:
+	- Feeding values into graphs:
+		- tf.placeholder(data.type)
+	- Placeholders are fed during run() using feed_dict={} argument 
+
+- Datasets
+	- An advanced placeholder that can stream data into a model
+	- To get a Tensor object from a Dataset, it must be converted into a tf.data.Iterator, which then calls a get_next() method to feed the next tensor
+	- There are multiple ways to create Iterators for different applications
+	- See "Importing Data": https://www.tensorflow.org/programmers_guide/datasets
+
+- Layers
+	- A way to add trainable parameters to a graph (trainable parameters allow graphs to produce different outputs with the same input)
+	- Many different classes of layers
+	- Layers work like functions - input Tensors, output Tensors
+
+	- Initializing Layers
+		- Layers contain variables that must be initialized - can be initialized in batches with global initializer
+
+	- Executing Layers
+		- Layer's output tensor can be evaluated with run() like normal
+
+	- Layer Function Shortcuts
+		- Each class of alyers has a shortcut function that create and run the layer in a single call
+		- Allows no access to the Layer object - makes inspection difficult
+
+- Feature Columns
+	
