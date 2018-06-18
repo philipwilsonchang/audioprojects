@@ -9,26 +9,6 @@ from __future__ import print_function
 import numpy as np
 import tensorflow as tf
 
-# Import training data
-filenames = ["../nsynth-test.tfrecord"]
-
-train_dataset = tf.data.TFRecordDataset(filenames)
-feature_list = {'note': tf.FixedLenFeature(shape=[], dtype=tf.int64),
-				'note_str': tf.FixedLenFeature(shape=[], dtype=tf.string),
-				'instrument': tf.FixedLenFeature(shape=[], dtype=tf.int64),
-				'instrument_str': tf.FixedLenFeature(shape=[], dtype=tf.string),
-				'pitch': tf.FixedLenFeature(shape=[], dtype=tf.int64),
-				'velocity': tf.FixedLenFeature(shape=[], dtype=tf.int64),
-				'sample_rate': tf.FixedLenFeature(shape=[], dtype=tf.int64),
-				'audio*': tf.FixedLenFeature(shape=[1], dtype=tf.float64),
-				'qualities': tf.FixedLenFeature(shape=[1], dtype=tf.int64),
-				'qualities_str': tf.FixedLenFeature(shape=[1], dtype=tf.string),
-				'instrument_family': tf.FixedLenFeature(shape=[], dtype=tf.int64),
-				'instrument_family_str': tf.FixedLenFeature(shape=[], dtype=tf.string),
-				'instrument_source': tf.FixedLenFeature(shape=[], dtype=tf.int64),
-				'instrument_source_str': tf.FixedLenFeature(shape=[], dtype=tf.string)
-}
-
 # List all data in tfrecord (literally all data)
 # for example in tf.python_io.tf_record_iterator("../nsynth-test.tfrecord"):
 # 	print(tf.train.Example.FromString(example))
@@ -54,3 +34,8 @@ def parse_tfrecord(tfrecord_example):
 				'instrument_source_str': tf.FixedLenFeature(shape=[], dtype=tf.string)}
 	parsed_features = tf.parse_single_example(tfrecord_example, feature_list)
 	return parsed_features
+
+# Import training data
+filenames = ["../nsynth-test.tfrecord"]
+
+train_dataset = tf.data.TFRecordDataset(filenames)
