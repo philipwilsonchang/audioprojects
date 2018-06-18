@@ -16,7 +16,7 @@ https://www.tensorflow.org/programmers_guide/low_level_intro
 	- TensorBoard: utility that visualizes the tf.Graph object
 
 - tf.Session:
-	- object that encapsulates the TensorFlow runtime and runs operations (like an executable)
+	- object that encapsulates the C++ TensorFlow runtime and runs operations (like an executable)
 	- tf.Session.run() runs a Session object, taking in Tensor objects
 	- run() requests a tensor object - TensorFlow runs all nodes that feed into the requested output tensor object
 	- each iteration of run() is independent - random values are not preserved across runs!
@@ -48,4 +48,18 @@ https://www.tensorflow.org/programmers_guide/low_level_intro
 		- Allows no access to the Layer object - makes inspection difficult
 
 - Feature Columns
-	
+	- TensorFlow's method of maintaining names of input data columns - bridges input data and the model
+	- Defined via tf.feature_column.input_layer() function, which takes dense columns as inputs
+	- More: https://www.tensorflow.org/get_started/feature_columns
+
+- Training
+	1. Define inputs and expected outputs
+	2. Build a model with layers 
+	3. Run() the model to get predicted outputs
+
+	- Loss
+		- Defines how far a model is from ideal output (e.g. linear regressions use mean square error)
+		- tf.losses provides set of common loss functions
+
+	- Training
+		- TensorFlow uses optimizers to change variables in a layer to minimimize loss (e.g. gradient descent)
