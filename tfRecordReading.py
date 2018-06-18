@@ -35,7 +35,7 @@ def parse_tfrecord(tfrecord_example):
 	parsed_features = tf.parse_single_example(tfrecord_example, feature_list)
 	return parsed_features
 
-# Import training data
+# Import training data, read all examples, extract features
 filenames = ["../nsynth-test.tfrecord"]
-
 train_dataset = tf.data.TFRecordDataset(filenames)
+train_dataset = train_dataset.map(parse_tfrecord)
