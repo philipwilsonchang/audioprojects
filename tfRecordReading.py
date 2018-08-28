@@ -25,7 +25,7 @@ def parse_tfrecord(tfrecord_example):
 				'pitch': tf.FixedLenFeature(shape=[], dtype=tf.int64),
 				'velocity': tf.FixedLenFeature(shape=[], dtype=tf.int64),
 				'sample_rate': tf.FixedLenFeature(shape=[], dtype=tf.int64),
-				'audio*': tf.FixedLenFeature(shape=[1], dtype=tf.float64),
+				'audio': tf.FixedLenFeature(shape=[1], dtype=tf.float64),
 				'qualities': tf.FixedLenFeature(shape=[1], dtype=tf.int64),
 				'qualities_str': tf.FixedLenFeature(shape=[1], dtype=tf.string),
 				'instrument_family': tf.FixedLenFeature(shape=[], dtype=tf.int64),
