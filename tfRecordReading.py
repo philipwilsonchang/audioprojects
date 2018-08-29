@@ -8,6 +8,7 @@ from __future__ import print_function
 
 import numpy as np
 import tensorflow as tf
+from scipy import signal
 
 # List all data in tfrecord (literally all data)
 # for example in tf.python_io.tf_record_iterator("../nsynth-test.tfrecord"):
@@ -36,6 +37,13 @@ def parse_tfrecord(tfrecord_example):
 	return parsed_features
 
 # Import training data, read all examples, extract features
-filenames = ["../nsynth-test.tfrecord"]
-train_dataset = tf.data.TFRecordDataset(filenames)
-train_dataset = train_dataset.map(parse_tfrecord)
+# tfrecordname = ["../data/nsynth-test.tfrecord"]
+# train_dataset = tf.data.TFRecordDataset(tfrecordname) # Parse entire dataset
+# train_dataset = train_dataset.map(parse_tfrecord)
+
+# Import single data example features
+tfrecordname = "../data/nsynth-test.tfrecord"
+tf_example = tf.python_io.tf_record_iterator(tfrecordname).next()
+example_data = parse_tfrecord(tf_example)
+
+print(example_data)

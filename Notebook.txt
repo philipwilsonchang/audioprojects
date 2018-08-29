@@ -1,5 +1,22 @@
 TensorFlow Notes
 
+
+General Notes:
+
+ToDo:
+	- Parse single example from TFRecord file
+	- Complete STFT test in tfRecordReading.py
+	- Create skeleton RNN network model in TF
+	- Feed STFT into RNN
+
+
+
+
+
+
+
+
+
 ######## INTRODUCTION #########
 https://www.tensorflow.org/programmers_guide/low_level_intro
 
