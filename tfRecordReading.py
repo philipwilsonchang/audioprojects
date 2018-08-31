@@ -10,6 +10,8 @@ import numpy as np
 import tensorflow as tf
 from scipy import signal
 
+SAMPLERATE = 16000
+
 # List all data in tfrecord (literally all data)
 # for example in tf.python_io.tf_record_iterator("../nsynth-test.tfrecord"):
 # 	print(tf.train.Example.FromString(example))
@@ -29,15 +31,18 @@ feature_list = {'note': tf.FixedLenFeature(shape=[], dtype=tf.int64),
 				'instrument_source': tf.FixedLenFeature(shape=[], dtype=tf.int64),
 				'instrument_source_str': tf.FixedLenFeature(shape=[], dtype=tf.string)}
 
-
 # Import training data, read all examples, extract features
-tfrecordname = ["../data/nsynth-test.tfrecord"]
+# tfrecordname = ["../data/nsynth-test.tfrecord"]
 # train_dataset = tf.data.TFRecordDataset(tfrecordname) # Parse entire dataset
 # train_dataset = train_dataset.map(parse_tfrecord)
 
+# Import single example of training data
 filename_queue = tf.train.string_input_producer(["../data/nsynth-test.tfrecord"])
 reader = tf.TFRecordReader()
 _, serialized = reader.read(filename_queue)
 features = tf.parse_single_example(serialized, feature_list)
 
-print(features)
+# STFT
+stft_out = tf.contrib.signal.stft(features["audio"], frame_length=SAMPLERATE * 4, frame_step=SAMPLERATE, fft_length=1024)
+power_spectrograms = tf.real(stft_out * tf.conj(stft_out))
+print(power_spectrograms)
