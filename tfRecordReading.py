@@ -43,6 +43,8 @@ _, serialized = reader.read(filename_queue)
 features = tf.parse_single_example(serialized, feature_list)
 
 # STFT
-stft_out = tf.contrib.signal.stft(features["audio"], frame_length=SAMPLERATE * 4, frame_step=SAMPLERATE, fft_length=1024)
-power_spectrograms = tf.real(stft_out * tf.conj(stft_out))
-print(power_spectrograms)
+# stft_out = tf.contrib.signal.stft(features["audio"], frame_length=SAMPLERATE * 4, frame_step=SAMPLERATE, fft_length=1024)
+# power_spectrograms = tf.real(stft_out * tf.conj(stft_out))
+# print(power_spectrograms)
+
+print(tf.cast(features['instrument_family'], tf.int64))
