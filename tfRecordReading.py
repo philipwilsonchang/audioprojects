@@ -47,4 +47,5 @@ features = tf.parse_single_example(serialized, feature_list)
 # power_spectrograms = tf.real(stft_out * tf.conj(stft_out))
 # print(power_spectrograms)
 
-print(tf.squeeze(features['instrument_family']))
+label = tf.cast(features['instrument_family'],tf.int64)
+print(label.get_shape())
