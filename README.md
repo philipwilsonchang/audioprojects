@@ -5,7 +5,7 @@ The NSynth dataset contains 4 second samples of different instruments playing di
 
 # Requirements
 
-These scripts were developed with Python 3.6.5 and Jupyter Notebook 4.4.0. Additionally, Numpy 1.14.5, and TensorFlow 1.10.0 was used.
+These scripts were developed with Python 3.6.5 and Jupyter Notebook 4.4.0. Additionally, Numpy 1.14.5 and TensorFlow 1.10.0 was used.
 
 
 # Running
