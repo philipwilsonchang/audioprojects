@@ -16,4 +16,8 @@ tfRecordSplitter.py splits the NSynth training tfrecord file into 11 uneven shar
 
 # Results
 
-The model had a peak accuracy of 28% after Epoch 3, after which the validation accuracy began to drop. This performance is markedly better than random selection (9% expected accuracy) but is still low. This indicates that a lot of information was lost in converting the 4-second sample into a spectrogram. Future work would explore incorporating a time dimension into the model input.
+The model had a peak accuracy of 28% after Epoch 3, after which the validation accuracy began to drop. This performance is markedly better than random selection (9% expected accuracy) but is still low. This indicates that a lot of information was lost in converting the 4-second sample into a spectrogram. Future work would explore incorporating a stronger time dimension into the model input.
+
+After adjusting the parameters of the model (and adjusting the spectrogram output to a range of -1 to 1 instead of 0 to 255), the model had a peak accuracy of 16.5% after several epochs. The batch size was changed from 64 to 32 and the learning rate increased from 0.0005 to 0.001. The loss function does not show long range decrease, indicating the network is not learning any patterns in the data. A significantly different NN architecture is probably needed.
+
+(in progress)
