@@ -10,7 +10,20 @@ ToDo:
 	- Feed STFT into RNN
 
 
+Initial model parameters:
+	Batch Size 64
+	Num Steps 5000
+	Learning Rate 0.00005
+	Dropout Rate 0.25
+	0-255 normalization of spectrograms
+	Peak Accuracy: 0.28 after Epoch 3
 
+Second model parameters:
+	Batch Size 32
+	Num Steps 10000
+	Learning Rate 0.001
+	Dropout Rate 0.25
+	-1 to 1 normalization of spectrograms
 
 
 
